@@ -6,6 +6,7 @@ from .serializers import simCardSerializer, TVSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -33,6 +34,11 @@ from rest_framework import generics
 class GetAllFirst(generics.ListAPIView):
     queryset=TV.objects.all()
     serializer_class=TVSerializer
+    permission_classes=(IsAuthenticated,)
+
+    def get_queryset(self):
+        print(self.request.user)
+        return TV.objects.all()
 
 class GetDetailFirst(generics.RetrieveAPIView):
     queryset = TV.objects.all()
@@ -63,6 +69,11 @@ class AllFunctionFirst(generics.RetrieveUpdateDestroyAPIView):
 class GetAllSecond(generics.ListAPIView):
     queryset=simCard.objects.all()
     serializer_class=simCardSerializer
+    permission_classes=(IsAuthenticated,)
+
+    def get_queryset(self):
+        print(self.request.user)
+        return simCard.objects.all()
 
 class GetDetailSecond(generics.RetrieveAPIView):
     queryset = simCard.objects.all()
