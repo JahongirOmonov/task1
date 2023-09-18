@@ -51,6 +51,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -78,8 +87,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'chochqa', 
-        'USER': 'kalamush',
+        'NAME': 'nursulton', #db nomi
+        'USER': 'postgres', #user nomi
         'PASSWORD': '125232',
         'HOST': '127.0.0.1', 
         'PORT': '5432',
